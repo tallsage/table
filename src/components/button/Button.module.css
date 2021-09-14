@@ -1,0 +1,12 @@
+.button{
+    background-color: #0A21A6;
+    border-radius: 12px;
+    border-color: rgb(85, 77, 77);
+    font-size: 50px;
+    font-weight: normal;
+    cursor: pointer;
+    text-shadow: 0 0 15px #999;
+    color: #F2F2F2;
+    transition: all .5s;
+    margin: 10px !important;
+}

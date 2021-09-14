@@ -1,0 +1,41 @@
+.main{
+    height: 720px;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-auto-rows: auto;
+}
+
+.left{
+    grid-column: 1;
+    background-color: #030BA6;
+}
+
+.button{
+    grid-column: 2;
+}
+
+.hiden{
+    height: 300px;
+    width: 400px;
+    border-radius: 15px;
+    font-size: 30px;
+    margin: 20% !important;
+    background-color: #F2F2F2;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 0.8;
+
+}
+
+.block{
+    width: 400px;
+    height: 100px;    
+}
+
+.b{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 10px !important;
+}
