@@ -1,22 +1,81 @@
-import React, {useState, setSate} from "react";
+import React, {useState, setSate, useEffect } from "react";
 import s from './Table.module.css'
 import Button from "../button/Button";
+import Toggle from "../toggle/Toggle";
+var _ = require('lodash')
 
-const Table = () =>{
+const Table = (props) =>{
 
     const [state, setState] = useState({
-        rows: 0
+        rows: true,
+        toggle: false,
+        info: null,
+        flag: true
     })
 
-    const getRows = () =>{
-        if (state.rows < 5) {
-            
+    useEffect(() => {
+        
+      });
+
+    const formatInfo = () =>{
+        if(props.info.length !== 0){
+            if(state.toggle){
+                var buff = []
+                props.info.forEach(el =>{
+                    if(el.Type === 'Учебно-методическая'){
+                        buff.push(el)
+                    }
+                })
+                    if(buff !== state.info && state.flag){
+                        setState({...state, info: buff, rows: false, flag:false})
+                    }
+            }else{
+                if(props.info !== state.info){
+                    setState({...state, info: props.info, rows: false, flag: true})
+                }
+            }
+        }
+    }
+    formatInfo()
+    const getRows = (key) =>{
+        if (state.rows) {
+            return (_.times(5, rowFunc))
+        }else{
+            return state.info.map(el => rowFunc(el, key))
         }
     }
 
-    const rowFunc = () => {
-        
+    const rowFunc = (el) => {
+        if (state.rows){
+            return (
+                <tr>
+                    <td>0</td>
+                    <td>0</td>
+                    <td>0</td>
+                    <td>0</td>
+                    <td>0</td>
+                    <td>0</td>
+                </tr>
+            )
+        }else{
+            return (
+                <tr>
+                    <td>{el.Person}</td>
+                    <td>{el.Type}</td>
+                    <td>{el.Name}</td>
+                    <td>{el.Theme}</td>
+                    <td>{el.Page}</td>
+                    <td>{el.Rating}</td>
+                </tr>
+            )
+        }
     }
+
+    const toggleHandler = (e) => {
+        const { target } = e;
+        const value = target.checked
+        setState({...state, toggle: value})
+      };
 
     return(
         <div>
@@ -24,41 +83,16 @@ const Table = () =>{
             <tbody>
                 <tr>
                     <th>Преподаватель</th>
-                    <th>Публикация</th> 
-                    {/*сверху сролер и выбор из учеб публ или все публ */}
+                    <th className={s.publish}>
+                        <p>Публикация</p>
+                        <Toggle id={'one'} toggleHandler={toggleHandler}/>
+                    </th> 
                     <th>Название</th>
                     <th>Тематика</th>
                     <th>Страниц</th>
                     <th>Рейтинг</th>
                 </tr>
-                <tr>
-                    <td>Microsoft</td>
-                    <td>20.3</td>
-                    <td>30.5</td>
-                    <td>23.5</td>
-                    <td>40.3</td>
-                </tr>
-                <tr>
-                    <td>Google</td>
-                    <td>50.2</td>
-                    <td>40.63</td>
-                    <td>45.23</td>
-                    <td>39.3</td>
-                </tr>
-                <tr>
-                    <td>Apple</td>
-                    <td>25.4</td>
-                    <td>30.2</td>
-                    <td>33.3</td>
-                    <td>36.7</td>
-                </tr>
-                <tr>
-                    <td>IBM</td>
-                    <td>20.4</td>
-                    <td>15.6</td>
-                    <td>22.3</td>
-                    <td>29.3</td>
-                </tr>
+                {getRows()}
             </tbody></table>
                 <div className={s.leftB}>
                     <Button width='200' height='80' text='НАЗАД' path='/'/>

@@ -1,0 +1,51 @@
+.label{
+    display:inline-flex;
+    align-items:center;
+    cursor:pointer
+}
+
+.toggle{
+    isolation: isolate;
+    position: relative;
+    height: 24px; width: 48px;
+    border-radius: 15px;
+    background: #bfbfbf;
+    overflow: hidden;
+}
+
+.toggleState{
+    display: none;
+}
+
+.toggleInner{
+    z-index: 2;
+    position: absolute;
+    top: 1px; width: 46px;
+    border-radius: 15px;
+    overflow: hidden;
+}
+
+.indicator{
+    height: 100%;   width: 200%;
+    background: rgb(255, 85, 85);
+    border-radius: 13px;
+    transform: translate3d(-75%, 0, 0);
+    transition: transform 0.35s cubic-bezier(0.85, 0.05, 0.18, 1.35)
+}
+
+.activeBg{
+    position: absolute;
+    top: 0; left: 0;
+    height: 100%;   width: 200%;
+    background: #25262b;
+    transform: translate3d(-100%, 0, 0);
+    transition: transform 0.05s linear 0.17s
+}
+
+.toggleState:checked ~ .toggleInner .indicator{
+    transform: translate3d(-25%, 0, 0);
+}
+
+.toggleState:checked ~ .activeBg{
+    transform: translate3d(-50%, 0, 0);
+}

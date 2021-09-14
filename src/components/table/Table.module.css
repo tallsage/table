@@ -14,3 +14,7 @@
 .leftB{
     margin-left: 80% !important;
 }
+
+.publish{
+    display: flex
+}
