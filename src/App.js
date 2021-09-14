@@ -14,15 +14,17 @@ var info = [{
   Name: 'Как в React',
   Theme: 'Frontend',
   Page: '13',
-  Rating: '3.14'
+  Rating: '3.14',
+  id: 1
 },
 {
   Person: 'Андреев Андрей',
   Type: 'Докторская',
-  Name: `А что Nod'a `,
+  Name: 'А что Noda ',
   Theme: 'Backend',
   Page: '44',
-  Rating: '2.7'
+  Rating: '2.7',
+  id: 2
 },
 {
   Person: 'Андреев Андрей',
@@ -30,7 +32,8 @@ var info = [{
   Name: `express, а что, а вдруг`,
   Theme: 'FullStack',
   Page: '282',
-  Rating: '4.20'
+  Rating: '4.20',
+  id: 3
 },
 {
   Person: 'Николаев Николай',
@@ -38,7 +41,8 @@ var info = [{
   Name: 'MERN?',
   Theme: 'FullStack',
   Page: '322',
-  Rating: '14.88'
+  Rating: '14.88',
+  id: 4
 }]
 
   return (

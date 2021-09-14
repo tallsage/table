@@ -10,7 +10,12 @@ const Table = (props) =>{
         rows: true,
         toggle: false,
         info: null,
-        flag: true
+        toggleFlag: true,
+        id: undefined,
+        value: undefined,
+        choiceFlag: true,
+        innerText: undefined,
+        default: true
     })
 
     useEffect(() => {
@@ -26,17 +31,59 @@ const Table = (props) =>{
                         buff.push(el)
                     }
                 })
-                    if(buff !== state.info && state.flag){
-                        setState({...state, info: buff, rows: false, flag:false})
+                    if(buff !== state.info && state.toggleFlag){
+                        setState({...state, info: buff, rows: false, toggleFlag:false})
                     }
             }else{
-                if(props.info !== state.info){
-                    setState({...state, info: props.info, rows: false, flag: true})
+                if(state.id !== undefined && state.value !== undefined && state.choiceFlag){
+                    var arr = []
+                    
+                    props.info.forEach(el =>{
+                        switch (state.value) {
+                            case 'Person':
+                                if(el.Person === state.innerText){
+                                    arr.push(el)
+                                }
+                                break;
+                            case 'Type':
+                                if(el.Type === state.innerText){
+                                    arr.push(el)
+                                }
+                                break;
+                            case 'Name':
+                                if(el.Name === state.innerText){
+                                    arr.push(el)
+                                }
+                                break;
+                            case 'Page':
+                                if(el.Page === state.innerText){
+                                    arr.push(el)
+                                }
+                                break;
+                            case 'Rating':
+                                if(el.Rating === state.innerText){
+                                    arr.push(el)
+                                }
+                                break;
+                            default:
+                                break;
+                        }
+                    })
+                    console.log(arr);
+                        if(arr !== state.info && state.choiceFlag){
+                            setState({...state, info: arr, rows: false, choiceFlag: false, default: false})
+                        }
+                }else{
+                    if(props.info !== state.info && state.default){
+                        setState({...state, info: props.info, rows: false, toggleFlag: true, choiceFlag: true, value: undefined, id: undefined})
+                    }
                 }
             }
         }
     }
+
     formatInfo()
+    
     const getRows = (key) =>{
         if (state.rows) {
             return (_.times(5, rowFunc))
@@ -60,12 +107,12 @@ const Table = (props) =>{
         }else{
             return (
                 <tr>
-                    <td>{el.Person}</td>
-                    <td>{el.Type}</td>
-                    <td>{el.Name}</td>
-                    <td>{el.Theme}</td>
-                    <td>{el.Page}</td>
-                    <td>{el.Rating}</td>
+                    <td id={el.id} data-value={'Person'} onClick={clickHandler}>{el.Person}</td>
+                    <td id={el.id} data-value={'Type'} onClick={clickHandler}>{el.Type}</td>
+                    <td id={el.id} data-value={'Name'} onClick={clickHandler}>{el.Name}</td>
+                    <td id={el.id} data-value={'Theme'} onClick={clickHandler}>{el.Theme}</td>
+                    <td id={el.id} data-value={'Page'} onClick={clickHandler}>{el.Page}</td>
+                    <td id={el.id} data-value={'Rating'} onClick={clickHandler}>{el.Rating}</td>
                 </tr>
             )
         }
@@ -76,6 +123,18 @@ const Table = (props) =>{
         const value = target.checked
         setState({...state, toggle: value})
       };
+
+    const handleDefault = () => {
+        setState({ ...state, default: true})
+    }
+
+    const clickHandler = (e) => {
+        const { target } = e;
+        const id = target.id
+        const value = (target.dataset.value !== undefined) ? (target.dataset.value) : (target.getAttribute('data-value'))
+        const innerText = target.innerText
+        setState({...state, id, value, innerText})
+    }
 
     return(
         <div>
@@ -96,6 +155,9 @@ const Table = (props) =>{
             </tbody></table>
                 <div className={s.leftB}>
                     <Button width='200' height='80' text='НАЗАД' path='/'/>
+                </div>
+                <div className={s.leftB} onClick={handleDefault}>
+                    <Button width='200' height='80' text='full' onClick={handleDefault}/>
                 </div>
         </div>
     )
