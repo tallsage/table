@@ -12,7 +12,17 @@
 }
 
 .leftB{
-    margin-left: 80% !important;
+    justify-content: start;
+}
+
+.rightB{
+    justify-content: end;
+}
+
+.twoB{
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
 }
 
 .publish{

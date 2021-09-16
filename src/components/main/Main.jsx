@@ -22,32 +22,46 @@ const Main = () =>{
             <div className={s.left}>
                 {(state.id === 'ТАБЛИЦА') ? 
                     (<div className={s.hiden}>
-                        Загорелось солнце над ебалом
-                        Сутки позади, но мы не спали
-                        Молодые боссы, будто Пабло
-                        Едем забирать пакеты с налом (Я, я, я)
-                    </div>) : (<></>)}
+                        Нажатие на эту кнопку 
+                        перекинет вас на первую
+                        из всех таблиц
+                    </div>) : (
+                        (state.id === 'ВЫБОР ТАБЛИЦЫ') ? 
+                        (<div className={s.hiden}>
+                            Нажатие на эту кнопку 
+                            перекинет вас на выбор 
+                            нужной для просмотра 
+                                   таблицу
+                        </div>) : (
+                            (state.id === 'ДОБАВИТЬ ТАБЛИЦУ') ? 
+                            (<div className={s.hiden}>
+                                Нажатие на эту кнопку 
+                                перекинет вас на 
+                                создание новой таблицы
+                            </div>) : (<></>)
+                        )
+                    )}
             </div>
             <div className={s.button}>
                 <div className={s.b}>
                     <div onMouseLeave={(e) => {handleMouseLeave(e)}} 
                         onMouseEnter={(e) => {handleMouseEnter(e)}}
                         className={s.block}>
-                        <Button width='400' height='100' text='ТАБЛИЦА' path='/table'/>
+                        <Button width='530' height='100' text='ТАБЛИЦА' path='/table'/>
                     </div>
                 </div>
                 <div className={s.b}>
                     <div onMouseLeave={(e) => {handleMouseLeave(e)}} 
                         onMouseEnter={(e) => {handleMouseEnter(e)}}
                         className={s.block}>
-                        <Button width='400' height='100' text='СЛАВА' />
+                        <Button width='530' height='100' text='ВЫБОР ТАБЛИЦЫ' />
                     </div>
                 </div>
                 <div className={s.b}>
                     <div onMouseLeave={(e) => {handleMouseLeave(e)}} 
                         onMouseEnter={(e) => {handleMouseEnter(e)}}
                         className={s.block}>
-                        <Button width='400' height='100' text='УКРАИНЕ'/>
+                        <Button width='530' height='100' text='ДОБАВИТЬ ТАБЛИЦУ'/>
                     </div>
                 </div>
             </div>

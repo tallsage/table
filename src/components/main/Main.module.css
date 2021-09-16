@@ -16,6 +16,9 @@
 
 .button{
     grid-column: 2;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
 }
 
 .hiden{

@@ -1,4 +1,4 @@
-import React, {useState, setSate, useEffect } from "react";
+import React, {useState, setSate} from "react";
 import s from './Table.module.css'
 import Button from "../button/Button";
 import Toggle from "../toggle/Toggle";
@@ -17,10 +17,6 @@ const Table = (props) =>{
         innerText: undefined,
         default: true
     })
-
-    useEffect(() => {
-        
-      });
 
     const formatInfo = () =>{
         if(props.info.length !== 0){
@@ -55,6 +51,11 @@ const Table = (props) =>{
                                     arr.push(el)
                                 }
                                 break;
+                            case 'Theme':
+                                if(el.Theme === state.innerText){
+                                    arr.push(el)
+                                };
+                                break;
                             case 'Page':
                                 if(el.Page === state.innerText){
                                     arr.push(el)
@@ -81,7 +82,6 @@ const Table = (props) =>{
             }
         }
     }
-
     formatInfo()
     
     const getRows = (key) =>{
@@ -92,7 +92,7 @@ const Table = (props) =>{
         }
     }
 
-    const rowFunc = (el) => {
+    const rowFunc = (el, key) => {
         if (state.rows){
             return (
                 <tr>
@@ -128,6 +128,10 @@ const Table = (props) =>{
         setState({ ...state, default: true})
     }
 
+    const handleAdd = () => {
+        
+    }
+
     const clickHandler = (e) => {
         const { target } = e;
         const id = target.id
@@ -153,12 +157,17 @@ const Table = (props) =>{
                 </tr>
                 {getRows()}
             </tbody></table>
+            <div className={s.twoB}>
                 <div className={s.leftB}>
-                    <Button width='200' height='80' text='НАЗАД' path='/'/>
+                    <Button width='200' height='80' text='BACK' path='/'/>
                 </div>
-                <div className={s.leftB} onClick={handleDefault}>
-                    <Button width='200' height='80' text='full' onClick={handleDefault}/>
+                <div className={s.centrB} onClick={handleAdd}>
+                    <Button width='200' height='80' text='ADD' onClick={handleDefault}/>
                 </div>
+                <div className={s.rightB} onClick={handleDefault}>
+                    <Button width='200' height='80' text='FULL' onClick={handleDefault}/>
+                </div>
+            </div> 
         </div>
     )
 }
