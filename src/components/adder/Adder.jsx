@@ -59,7 +59,6 @@ const Adder = (props) =>{
 
     const createName = (e) => {
         var Name = e.target.value
-        console.log(e.target.value);
         setState({...state, Name})
         props.createTableName(Name)
     }
