@@ -2,7 +2,7 @@ import React, {useState, setSate} from "react";
 import s from './Main.module.css'
 import Button from "../button/Button";
 
-const Main = () =>{
+const Main = (props) =>{
     
     const [state, setState] = useState({
         id: undefined
@@ -47,21 +47,21 @@ const Main = () =>{
                     <div onMouseLeave={(e) => {handleMouseLeave(e)}} 
                         onMouseEnter={(e) => {handleMouseEnter(e)}}
                         className={s.block}>
-                        <Button width='530' height='100' text='ТАБЛИЦА' path='/table'/>
+                        <Button width='530' height='100' text={props.state[0].name} path='/table?1'/>
                     </div>
                 </div>
                 <div className={s.b}>
                     <div onMouseLeave={(e) => {handleMouseLeave(e)}} 
                         onMouseEnter={(e) => {handleMouseEnter(e)}}
                         className={s.block}>
-                        <Button width='530' height='100' text='ВЫБОР ТАБЛИЦЫ' />
+                        <Button width='530' height='100' text='ВЫБОР ТАБЛИЦЫ' path='/allTable'/>
                     </div>
                 </div>
                 <div className={s.b}>
                     <div onMouseLeave={(e) => {handleMouseLeave(e)}} 
                         onMouseEnter={(e) => {handleMouseEnter(e)}}
                         className={s.block}>
-                        <Button width='530' height='100' text='ДОБАВИТЬ ТАБЛИЦУ'/>
+                        <Button width='530' height='100' text='ДОБАВИТЬ ТАБЛИЦУ' path='/createTable'/>
                     </div>
                 </div>
             </div>

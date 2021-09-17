@@ -180,10 +180,18 @@ const Table = (props) =>{
             </div> 
             <div className={s.modal}>
                 <Adder 
+                    text={'Введите информацию'}
                     show={state.setShow} 
                     handleClose={handleClose}
                     addString={props.addString}
+                    info={props.info}
                     updateStringPerson={props.updateStringPerson}
+                    updateStringType={props.updateStringType}
+                    updateStringName={props.updateStringName}
+                    updateStringTheme={props.updateStringTheme}
+                    updateStringPage={props.updateStringPage}
+                    updateStringRating={props.updateStringRating}
+                    updateIntId={props.updateIntId}
                 />
             </div>
         </div>

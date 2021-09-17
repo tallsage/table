@@ -1,0 +1,18 @@
+.button{
+    grid-column: 2;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.block{
+    width: 400px;
+    height: 100px;    
+}
+
+.b{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 10px !important;
+}
