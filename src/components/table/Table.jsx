@@ -2,6 +2,7 @@ import React, {useState, setSate} from "react";
 import s from './Table.module.css'
 import Button from "../button/Button";
 import Toggle from "../toggle/Toggle";
+import Adder from "../adder/Adder";
 var _ = require('lodash')
 
 const Table = (props) =>{
@@ -15,7 +16,8 @@ const Table = (props) =>{
         value: undefined,
         choiceFlag: true,
         innerText: undefined,
-        default: true
+        default: true,
+        setShow: false
     })
 
     const formatInfo = () =>{
@@ -129,8 +131,16 @@ const Table = (props) =>{
     }
 
     const handleAdd = () => {
-        
+
     }
+
+    const handleClose = () => {
+        setState({...state, setShow: false})
+    }
+
+    const handleShow = () => {
+        setState({...state, setShow: true})
+    };
 
     const clickHandler = (e) => {
         const { target } = e;
@@ -161,13 +171,21 @@ const Table = (props) =>{
                 <div className={s.leftB}>
                     <Button width='200' height='80' text='BACK' path='/'/>
                 </div>
-                <div className={s.centrB} onClick={handleAdd}>
-                    <Button width='200' height='80' text='ADD' onClick={handleDefault}/>
+                <div className={s.centrB} onClick={handleShow}>
+                    <Button width='200' height='80' text='ADD'/>
                 </div>
                 <div className={s.rightB} onClick={handleDefault}>
-                    <Button width='200' height='80' text='FULL' onClick={handleDefault}/>
+                    <Button width='200' height='80' text='FULL'/>
                 </div>
             </div> 
+            <div className={s.modal}>
+                <Adder 
+                    show={state.setShow} 
+                    handleClose={handleClose}
+                    addString={props.addString}
+                    updateStringPerson={props.updateStringPerson}
+                />
+            </div>
         </div>
     )
 }
