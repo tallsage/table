@@ -20,7 +20,7 @@ const Main = (props) =>{
     return(
         <div className={s.main}>
             <div className={s.left}>
-                {(state.id === 'ТАБЛИЦА') ? 
+                {(state.id === props.state[0].name) ? 
                     (<div className={s.hiden}>
                         Нажатие на эту кнопку 
                         перекинет вас на первую
@@ -47,7 +47,7 @@ const Main = (props) =>{
                     <div onMouseLeave={(e) => {handleMouseLeave(e)}} 
                         onMouseEnter={(e) => {handleMouseEnter(e)}}
                         className={s.block}>
-                        <Button width='530' height='100' text={props.state[0].name} path='/table?1'/>
+                        <Button width='530' height='100' text={props.state[0].name} path='/table/1'/>
                     </div>
                 </div>
                 <div className={s.b}>

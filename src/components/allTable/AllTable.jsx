@@ -11,7 +11,7 @@ const AllTable = (props) =>{
             return (
                 <div className={s.b}>
                 <div className={s.block}>
-                    <Button width='530' height='100' text={'ТАБЛИЦА ' + i} path={'/table?' + i}/>
+                    <Button width='530' height='100' text={el.name} path={'/table/' + i}/>
                 </div>
             </div>
             )

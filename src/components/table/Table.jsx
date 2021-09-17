@@ -130,10 +130,6 @@ const Table = (props) =>{
         setState({ ...state, default: true})
     }
 
-    const handleAdd = () => {
-
-    }
-
     const handleClose = () => {
         setState({...state, setShow: false})
     }

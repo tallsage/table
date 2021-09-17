@@ -9,14 +9,20 @@ import CreateTable from './components/createTable/CreateTable';
 
 const App = (props) => {
 
+  var index
+  const getIndexOf = () =>{
+    index = props.state.length
+  }
+  getIndexOf()
+
   return (
     <BrowserRouter>
     <div className='App'>
       <Switch>
         <Route exact path='/' render={()=><Main state={props.state}/>}/>
-        <Route exact path='/table' render={()=>
+        <Route exact path={'/table/' + index} render={()=>
           <Table 
-            info={props.state[0].table}
+            info={props.state[index-1].table}
             updateStringPerson={props.updateStringPerson}
             updateStringType={props.updateStringType}
             updateStringName={props.updateStringName}
@@ -32,8 +38,9 @@ const App = (props) => {
         />
         <Route exact path='/createTable' render={()=>
           <CreateTable
-            addTable = {props.addTable}
-            createTableName = {props.createTableName}
+            addTable={props.addTable}
+            createTableName={props.createTableName}
+            updateStringPerson={props.updateStringPerson}
           />}
         />
       </Switch>

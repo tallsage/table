@@ -1,7 +1,10 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './App';
-import {addString, updateStringPerson, updateStringType, updateStringName, updateStringTheme, updateStringPage, updateStringRating, updateIntId, createTableName, addTable} from './redux/state'
+import {addString, updateStringPerson, updateStringType, 
+        updateStringName, updateStringTheme, updateStringPage, 
+        updateStringRating, updateIntId, createTableName, 
+        addTable} from './redux/state'
 
 
 export var renderEntireTree = (state) =>{

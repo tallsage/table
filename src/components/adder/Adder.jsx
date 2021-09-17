@@ -3,9 +3,9 @@ import s from './Adder.module.css';
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import { NavLink } from "react-router-dom";
 
 const Adder = (props) =>{  
-
     const [state, setState] = useState({
         inputValuePe: '',
         inputValueTy: '',
@@ -57,18 +57,22 @@ const Adder = (props) =>{
         props.updateIntId(newId)
     }
 
-    const createTableName = (e) => {
-        var name = e.target.value
-        props.createTableName(name)
+    const createName = (e) => {
+        var Name = e.target.value
+        console.log(e.target.value);
+        setState({...state, Name})
+        props.createTableName(Name)
     }
 
-    const addTable = () => {
+    const newTable = () => {
+        console.log(1234);
         props.addTable()
+        setState({...state, Name: ''})
     }
 
     const addString = () =>{
         updId()
-        props.addString()
+        props.addString(props.index)
         setState({...state,
             inputValuePe: '',
             inputValueTy: '',
@@ -88,11 +92,13 @@ const Adder = (props) =>{
             <div className={s.body}>
             <form>
                 {(props.name === true) ? (
-                <div className={s.group}>      
-                    <input type="text" required value={state.Name} onChange={createTableName}/>
-                    <span className={s.bar}></span>
-                    <label className={s.label}>Название таблицы</label>
-                </div>) : (
+                    <div>
+                        <div className={s.group}>      
+                            <input type="text" required value={state.Name} onChange={createName}/>
+                            <span className={s.bar}></span>
+                            <label className={s.label}>Название таблицы</label>
+                        </div>
+                    </div>) : (
                     <div>
                         <div className={s.group}>      
                             <input type="text" required value={state.inputValuePe} onChange={updPerson}/>
@@ -131,14 +137,21 @@ const Adder = (props) =>{
         </Modal.Body>
         <Modal.Footer className={s.footer}>
             <Button variant="primary" onClick={()=>{
-                (props.name === true) ? (addTable()) : (addString()) 
+                (props.name === true) ? (newTable()) : (addString())
                 props.handleClose()
             }} size='lg' className={s.button}>
             Save Changes
             </Button>
-            <Button variant="secondary" onClick={props.handleClose} size='lg' className={s.button}>
-            Close
-            </Button>
+            {(props.path) ? (
+            <NavLink to={props.path}>
+                <Button variant="secondary" onClick={props.handleClose} size='lg' className={s.button}>
+                    Close
+                </Button>
+            </NavLink>):(
+                <Button variant="secondary" onClick={props.handleClose} size='lg' className={s.button}>
+                    Close
+                </Button>
+            )}
         </Modal.Footer>
         </Modal>
     </div>

@@ -38,11 +38,10 @@ let state =
     Theme: 'FullStack',
     Page: '322',
     Rating: '14.88',
-    id: 4
-}]
+    id: 4}]
 }]
 
-export const addString = () => {
+export const addString = (index) => {
     var newString = {
         Person: state.newPerson,
         Type: state.newType,
@@ -52,7 +51,7 @@ export const addString = () => {
         Rating: state.newRating,
         id: state.id
     }
-    state[0].table.push(newString)
+    state[index].table.push(newString)
     state.newPerson = ''
     state.newType = ''
     state.newName = ''
@@ -60,15 +59,19 @@ export const addString = () => {
     state.newPage = ''
     state.newRating = ''
     state.id = ''
+    
     renderEntireTree(state)
 }
 
 export const addTable = () => {
+    var length = state.length
     var newTable = {
-        name: state.Name
+        name: state.buffer,
+        id: length,
+        table: []
     }
     state.push(newTable)
-    state.Name = ''
+    state.buffer = ''
     renderEntireTree(state)
 }
 
@@ -102,13 +105,13 @@ export const updateStringRating = (newText) => {
     renderEntireTree(state)
 }
 
-export const updateIntId = (newText) => {
-    state.id = newText
+export const createTableName = (newText) => {
+    state.buffer = newText
     renderEntireTree(state)
 }
 
-export const createTableName = (newText) => {
-    state.Name = newText
+export const updateIntId = (newText) => {
+    state.id = newText
     renderEntireTree(state)
 }
 
