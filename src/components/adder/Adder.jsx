@@ -64,14 +64,13 @@ const Adder = (props) =>{
     }
 
     const newTable = () => {
-        console.log(1234);
         props.addTable()
         setState({...state, Name: ''})
     }
 
     const addString = () =>{
         updId()
-        props.addString(props.index)
+        props.addString(props.index-1)
         setState({...state,
             inputValuePe: '',
             inputValueTy: '',

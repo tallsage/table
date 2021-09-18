@@ -31,6 +31,21 @@ const App = (props) => {
             updateStringRating={props.updateStringRating}
             updateIntId={props.updateIntId}
             addString={props.addString}
+            index={index}
+          />}
+        />
+        <Route exact path={'/table/1'} render={()=>
+          <Table 
+            info={props.state[0].table}
+            updateStringPerson={props.updateStringPerson}
+            updateStringType={props.updateStringType}
+            updateStringName={props.updateStringName}
+            updateStringTheme={props.updateStringTheme}
+            updateStringPage={props.updateStringPage}
+            updateStringRating={props.updateStringRating}
+            updateIntId={props.updateIntId}
+            addString={props.addString}
+            index={index}
           />}
         />
         <Route exact path='/allTable' render={()=>

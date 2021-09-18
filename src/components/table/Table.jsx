@@ -188,6 +188,7 @@ const Table = (props) =>{
                     updateStringPage={props.updateStringPage}
                     updateStringRating={props.updateStringRating}
                     updateIntId={props.updateIntId}
+                    index={props.index}
                 />
             </div>
         </div>
