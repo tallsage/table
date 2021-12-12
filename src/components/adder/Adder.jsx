@@ -43,7 +43,7 @@ const Adder = (props) =>{
     const updPage = (e) => {
         var inputValuePa = e.target.value
         setState({...state, inputValuePa})
-        props.updateStringPerson(inputValuePa)
+        props.updateStringPage(inputValuePa)
     }
 
     const updRating = (e) => {
